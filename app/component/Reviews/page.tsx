@@ -9,7 +9,7 @@ export default async function Reviews({ comments }: TReviewsProp) {
   console.log(comments);
 
   const renderComment = (cms: TReviews[]) => {
-    if (cms.length > 0 && cms) {
+    if (cms) {
       return cms.map((comment) => {
         return (
           <div key={comment.id} className="border-b border-gray-200 pb-7">
