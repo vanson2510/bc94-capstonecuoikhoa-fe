@@ -1,9 +1,9 @@
-import React from "react";
+import SignInForm from "@/app/component/Auth";
 
-export default function News() {
+export default function SignIn() {
   return (
     <div>
-      <h1>Đăng nhập</h1>
+      <SignInForm />
     </div>
   );
 }
