@@ -1,18 +1,23 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import fetchSignUp from "@/app/services/auth";
 
 export default function SignUpForm() {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Dữ liệu gửi lên:", formData);
 
     try {
       const result = await fetchSignUp(formData);
-
       console.log("Kết quả API:", result);
+
+      alert("Bạn đã đăng nhập thành công!");
+      router.push("/SignIn");
     } catch (error) {
       console.error("Lỗi API:", error);
+      alert("Bạn đã đăng nhập thất bại!");
     }
   };
 
@@ -54,7 +59,6 @@ export default function SignUpForm() {
           id="account"
           className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
           placeholder=" "
-          required
         />
         <label
           htmlFor="account"
@@ -71,9 +75,9 @@ export default function SignUpForm() {
           id="password"
           className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
           placeholder=" "
-          required
           value={formData.password}
           onChange={handleChange}
+          required
         />
         <label
           htmlFor="password"
@@ -108,7 +112,6 @@ export default function SignUpForm() {
             id="name"
             className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
             placeholder=" "
-            required
             value={formData.name}
             onChange={handleChange}
           />
@@ -197,7 +200,6 @@ export default function SignUpForm() {
             id="birthday"
             className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
             placeholder=" "
-            required
             value={formData.birthday}
             onChange={handleChange}
           />
@@ -218,9 +220,9 @@ export default function SignUpForm() {
           id="email"
           className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
           placeholder=" "
-          required
           value={formData.email}
           onChange={handleChange}
+          required
         />
         <label
           htmlFor="email"
@@ -238,7 +240,6 @@ export default function SignUpForm() {
           id="skill"
           className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
           placeholder=" "
-          required
           value={formData.skill.join(", ")}
           onChange={handleChange}
         />
@@ -258,7 +259,6 @@ export default function SignUpForm() {
           id="certification"
           className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
           placeholder=" "
-          required
           value={formData.certification.join(", ")}
           onChange={handleChange}
         />

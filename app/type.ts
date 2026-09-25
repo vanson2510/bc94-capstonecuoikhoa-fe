@@ -73,3 +73,28 @@ export type TSignUp = {
   skill: string[];
   certification: string[];
 };
+
+export type TSignIn = {
+  email: string;
+  password: string;
+};
+
+export type TUser = {
+  avatar: string;
+  birthday: string;
+  bookingJob: [];
+  certification: string[];
+  email: string;
+  gender: boolean;
+  id: number;
+  name: string;
+  password: string;
+  phone: string;
+  role: string;
+  skill: string[];
+};
+
+export type TSignInResponse = {
+  token: string;
+  user: TUser;
+};

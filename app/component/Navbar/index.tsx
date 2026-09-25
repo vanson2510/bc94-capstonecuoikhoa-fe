@@ -10,14 +10,37 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // ==============================
+  // const token = sessionStorage.getItem("token");
+
+  const renderAfterLogin = (token: string) => {
+    if (token) {
+      return (
+        <div>
+          <div className="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full">
+            <svg
+              className="absolute w-12 h-12 text-body-subtle -left-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      );
+    }
+  };
+
   // STATE LƯU DANH SÁCH LOẠI JOB
-  // ==============================
+
   const [data, setData] = useState<TNameType[]>([]);
 
-  // ==============================
   // GỌI API LẤY LOẠI CÔNG VIỆC
-  // ==============================
+
   useEffect(() => {
     const handleMenu = async () => {
       try {
@@ -32,16 +55,10 @@ export default function Navbar() {
     handleMenu();
   }, []);
 
-  // ==============================
-  // CHUYỂN SANG TRANG LIST JOB
-  // ==============================
   const handleGoToListJobTypeJob = (tenLoaiCongViec: string) => {
     router.push(`/ListJobTypeJob/${encodeURIComponent(tenLoaiCongViec)}`);
   };
 
-  // ==============================
-  // RENDER TÊN LOẠI CÔNG VIỆC
-  // ==============================
   const renderMenuJob = () => {
     return data.map((nameType) => (
       <button
