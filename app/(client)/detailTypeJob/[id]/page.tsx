@@ -1,5 +1,6 @@
 import Reviews from "@/app/component/Reviews/page";
-import { fetchJobFollowingDetail, fetchReviews } from "@/app/services/job";
+import { fetchJobFollowingDetail } from "@/app/services/job";
+import { fetchReviews } from "@/app/services/review";
 import Image from "next/image";
 
 type TProps = {
@@ -317,7 +318,7 @@ export default async function DetailTypeJob(props: TProps) {
         </div>
       </main>
 
-      <Reviews comments={comments} />
+      <Reviews comments={comments} id={id} />
     </div>
   );
 }

@@ -9,27 +9,173 @@ import { TNameType } from "@/app/type";
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [token, setToken] = useState<string | null>(null);
 
-  // const token = sessionStorage.getItem("token");
+  useEffect(() => {
+    console.log("🔥 useEffect đã chạy");
+    const savedToken =
+      typeof window !== "undefined" ? sessionStorage.getItem("Token") : null;
+    console.log("Token trong sessionStorage:", savedToken);
+    setToken(savedToken);
+  }, [pathname]);
 
-  const renderAfterLogin = (token: string) => {
+  const renderAfterLogin = (token: string | null) => {
     if (token) {
       return (
-        <div>
-          <div className="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full">
-            <svg
-              className="absolute w-12 h-12 text-body-subtle -left-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+        <div
+          className="
+              hidden
+              w-full
+              md:block
+              md:w-auto
+            "
+        >
+          <ul
+            className="
+                font-medium
+                flex
+                flex-col
+                p-4
+                md:p-0
+                mt-4
+                md:flex-row
+                md:space-x-8
+                md:mt-0
+              "
+          >
+            {/* BECOME A SELLER */}
+
+            <li>
+              <Link
+                href="/"
+                className={
+                  pathname === "/"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Become a Seller
+              </Link>
+            </li>
+
+            {/* JOIN */}
+            <li>
+              <Link
+                href="/dangnhap"
+                className={
+                  pathname === "/dangnhap"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Join
+              </Link>
+            </li>
+            {/* AVATAR */}
+            <li>
+              <Link href="/userinfo">
+                <div>
+                  <div className="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full">
+                    <svg
+                      className="absolute w-12 h-12 text-body-subtle -left-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="
+              hidden
+              w-full
+              md:block
+              md:w-auto
+            "
+        >
+          <ul
+            className="
+                font-medium
+                flex
+                flex-col
+                p-4
+                md:p-0
+                mt-4
+                md:flex-row
+                md:space-x-8
+                md:mt-0
+              "
+          >
+            {/* BECOME A SELLER */}
+
+            <li>
+              <Link
+                href="/"
+                className={
+                  pathname === "/"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Become a Seller
+              </Link>
+            </li>
+
+            {/* SIGN UP */}
+
+            <li>
+              <Link
+                href="/SignUp"
+                className={
+                  pathname === "/SignUp"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Sign Up
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/SignIn"
+                className={
+                  pathname === "/SignIn"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Sign In
+              </Link>
+            </li>
+
+            {/* JOIN */}
+
+            <li>
+              <Link
+                href="/dangnhap"
+                className={
+                  pathname === "/dangnhap"
+                    ? "text-green-600 font-bold"
+                    : "text-gray-700 hover:text-green-600"
+                }
+              >
+                Join
+              </Link>
+            </li>
+          </ul>
         </div>
       );
     }
@@ -142,86 +288,7 @@ export default function Navbar() {
 
           {/* USER MENU */}
 
-          <div
-            className="
-              hidden
-              w-full
-              md:block
-              md:w-auto
-            "
-          >
-            <ul
-              className="
-                font-medium
-                flex
-                flex-col
-                p-4
-                md:p-0
-                mt-4
-                md:flex-row
-                md:space-x-8
-                md:mt-0
-              "
-            >
-              {/* BECOME A SELLER */}
-
-              <li>
-                <Link
-                  href="/"
-                  className={
-                    pathname === "/"
-                      ? "text-green-600 font-bold"
-                      : "text-gray-700 hover:text-green-600"
-                  }
-                >
-                  Become a Seller
-                </Link>
-              </li>
-
-              {/* SIGN UP */}
-
-              <li>
-                <Link
-                  href="/SignUp"
-                  className={
-                    pathname === "/SignUp"
-                      ? "text-green-600 font-bold"
-                      : "text-gray-700 hover:text-green-600"
-                  }
-                >
-                  Sign Up
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/SignIn"
-                  className={
-                    pathname === "/SignIn"
-                      ? "text-green-600 font-bold"
-                      : "text-gray-700 hover:text-green-600"
-                  }
-                >
-                  Sign In
-                </Link>
-              </li>
-
-              {/* JOIN */}
-
-              <li>
-                <Link
-                  href="/dangnhap"
-                  className={
-                    pathname === "/dangnhap"
-                      ? "text-green-600 font-bold"
-                      : "text-gray-700 hover:text-green-600"
-                  }
-                >
-                  Join
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div>{renderAfterLogin(token)}</div>
         </div>
 
         {/* ========================================= */}
