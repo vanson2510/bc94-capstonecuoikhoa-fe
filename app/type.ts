@@ -98,3 +98,12 @@ export type TSignInResponse = {
   token: string;
   user: TUser;
 };
+
+export type TComment = {
+  id?: number | string;
+  maCongViec: number | string;
+  maNguoiBinhLuan: number | string;
+  ngayBinhLuan: string;
+  noiDung: string;
+  saoBinhLuan: number;
+};

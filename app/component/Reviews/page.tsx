@@ -1,12 +1,15 @@
 import { TReviews } from "@/app/type";
 import Image from "next/image";
+import CommentInput from "../CommentInput";
+import { sendComments } from "@/app/services/review";
 
 type TReviewsProp = {
   comments: TReviews[];
+  id: number | string;
 };
 
-export default async function Reviews({ comments }: TReviewsProp) {
-  console.log(comments);
+export default function Reviews({ comments, id }: TReviewsProp) {
+  console.log(comments, id);
 
   const renderComment = (cms: TReviews[]) => {
     if (cms) {
@@ -140,6 +143,7 @@ export default async function Reviews({ comments }: TReviewsProp) {
       });
     }
   };
+
   return (
     <section className="mx-auto mt-10 max-w-5xl">
       {/* ================= HEADER ================= */}
@@ -171,84 +175,7 @@ export default async function Reviews({ comments }: TReviewsProp) {
 
       {/* ================= ADD COMMENT ================= */}
 
-      <div className="mt-8">
-        <div className="mb-3">
-          <h3 className="text-lg font-bold text-gray-900">Leave a review</h3>
-
-          <p className="mt-1 text-sm text-gray-500">
-            Share your experience with this service.
-          </p>
-        </div>
-
-        {/* Rating */}
-
-        <div className="mb-4 flex items-center gap-3">
-          <span className="text-sm font-medium text-gray-700">
-            Your rating:
-          </span>
-
-          <div className="flex gap-1 text-xl text-gray-300">
-            <button className="transition hover:text-yellow-400">★</button>
-
-            <button className="transition hover:text-yellow-400">★</button>
-
-            <button className="transition hover:text-yellow-400">★</button>
-
-            <button className="transition hover:text-yellow-400">★</button>
-
-            <button className="transition hover:text-yellow-400">★</button>
-          </div>
-        </div>
-
-        {/* Textarea */}
-
-        <textarea
-          placeholder="Write your review..."
-          className="
-            min-h-32
-            w-full
-            resize-y
-            rounded-xl
-            border
-            border-gray-200
-            bg-white
-            p-4
-            text-sm
-            text-gray-700
-            outline-none
-            transition
-            placeholder:text-gray-400
-            focus:border-green-500
-            focus:ring-4
-            focus:ring-green-100
-          "
-        />
-
-        {/* Bottom */}
-
-        <div className="mt-4 flex items-center justify-between">
-          <p className="text-xs text-gray-400">
-            Your feedback helps other buyers make better decisions.
-          </p>
-
-          <button
-            className="
-              rounded-lg
-              bg-green-500
-              px-6
-              py-3
-              text-sm
-              font-semibold
-              text-white
-              shadow-sm
-              transition
-              hover:bg-green-600
-            "
-          >
-            Add Comment
-          </button>
-        </div>
-      </div>
+      <CommentInput maCongViec={id} />
     </section>
   );
 }

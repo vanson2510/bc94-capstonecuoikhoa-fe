@@ -39,8 +39,8 @@ export default function Service() {
   return (
     <div>
       {" "}
-      <div className="service bg-gray-400 py-20 pt-10">
-        <h1 className="text-3xl pl-9 mb-7 text-white">
+      <div className="service bg-green-50 py-20 pt-10">
+        <h1 className="text-3xl pl-9 mb-7 text-black">
           Popular professional services
         </h1>
 

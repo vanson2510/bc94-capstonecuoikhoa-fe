@@ -21,12 +21,12 @@ export default function SignInForm() {
 
       console.log("Kết quả API:", result);
 
-      alert("Bạn đã đăng nhập thành công!");
-      router.push("/");
-
       sessionStorage.setItem("Token", result.content.token);
 
       sessionStorage.setItem("user", JSON.stringify(result.content.user));
+
+      alert("Bạn đã đăng nhập thành công!");
+      router.push("/");
     } catch (error) {
       console.error("Lỗi API: ", error);
       alert("Bạn đã đăng nhập thất bại!");
