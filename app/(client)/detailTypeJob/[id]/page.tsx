@@ -2,6 +2,7 @@ import Reviews from "@/app/component/Reviews/page";
 import { fetchJobFollowingDetail } from "@/app/services/job";
 import { fetchReviews } from "@/app/services/review";
 import Image from "next/image";
+import HireButton from "@/app/component/HiredButton/index";
 
 type TProps = {
   params: {
@@ -253,21 +254,10 @@ export default async function DetailTypeJob(props: TProps) {
 
                   {/* BUTTON */}
 
-                  <button
-                    className="
-                    mt-7
-                    w-full
-                    rounded-xl
-                    bg-green-500
-                    py-4
-                    font-semibold
-                    text-white
-                    transition
-                    hover:bg-green-600
-                  "
-                  >
-                    Continue — ${data?.[0].congViec.giaTien}
-                  </button>
+                  <HireButton
+                    jobId={data[0].congViec.id}
+                    price={data[0].congViec.giaTien}
+                  />
 
                   <button
                     className="

@@ -48,7 +48,7 @@ export type TJob = {
   hinhAnh: string;
   moTa: string;
   maChiTietLoaiCongViec: number;
-  moTaNgan: number;
+  moTaNgan: string;
   saoCongViec: 3;
 };
 
@@ -108,4 +108,10 @@ export type TComment = {
   saoBinhLuan: number;
 };
 
-export type THired = {};
+export type THired = {
+  id: number;
+  maCongViec: number;
+  maNguoiThue: number;
+  ngayThue: string;
+  hoanThanh: boolean;
+};

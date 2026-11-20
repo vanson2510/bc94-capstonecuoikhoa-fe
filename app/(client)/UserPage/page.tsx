@@ -47,29 +47,6 @@ const gigs: TGig[] = [
 ];
 
 export default function UserPage() {
-  // Dữ liệu mẫu, sau này em thay bằng dữ liệu API
-  const userdemo = {
-    name: "Nguyễn Văn A",
-    username: "nguyenvana",
-    email: "nguyenvana@gmail.com",
-    country: "Vietnam",
-    description:
-      "Xin chào! Tôi là một Frontend Developer. Tôi có kinh nghiệm xây dựng website bằng ReactJS, NextJS và Tailwind CSS. Tôi luôn cố gắng mang đến những sản phẩm chất lượng và trải nghiệm tốt nhất cho khách hàng.",
-    languages: ["Vietnamese (Native)", "English (Basic)"],
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "ReactJS",
-      "NextJS",
-      "Tailwind CSS",
-      "TypeScript",
-    ],
-    education: "Information Technology",
-    school: "University of Information Technology",
-    certification: "Frontend Web Development",
-  };
-
   const pathname = usePathname();
   const [idUser, setIdUser] = useState<number | string>(0);
   const [user, setUser] = useState<TUser>();
