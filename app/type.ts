@@ -107,3 +107,5 @@ export type TComment = {
   noiDung: string;
   saoBinhLuan: number;
 };
+
+export type THired = {};

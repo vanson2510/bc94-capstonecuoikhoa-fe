@@ -12,7 +12,7 @@ export default function Navbar() {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log("🔥 useEffect đã chạy");
+    // console.log("🔥 useEffect đã chạy");
     const savedToken =
       typeof window !== "undefined" ? sessionStorage.getItem("Token") : null;
     console.log("Token trong sessionStorage:", savedToken);
@@ -58,22 +58,9 @@ export default function Navbar() {
               </Link>
             </li>
 
-            {/* JOIN */}
-            <li>
-              <Link
-                href="/dangnhap"
-                className={
-                  pathname === "/dangnhap"
-                    ? "text-green-600 font-bold"
-                    : "text-gray-700 hover:text-green-600"
-                }
-              >
-                Join
-              </Link>
-            </li>
             {/* AVATAR */}
             <li>
-              <Link href="/userinfo">
+              <Link href="/UserPage">
                 <div>
                   <div className="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full">
                     <svg
